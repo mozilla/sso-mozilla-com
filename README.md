@@ -1,4 +1,4 @@
-sso-mozilla-com
+sso.mozilla.com
 ===============
 
-static pages for sso.mozilla.com
+These are the static pages behind sso.mozilla.com.
