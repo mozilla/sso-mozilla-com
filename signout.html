@@ -16,9 +16,23 @@
     <script src="/media/js/libs/html5shiv.js"></script>
     <![endif]-->
 
+    <!-- script to check query strings -->
+    <script type="text/javascript">
+        function getQuerystring(name) {
+            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+            var regexS = "[\\?&]"+name+"=([^&#]*)";
+            var regex = new RegExp( regexS );
+            var results = regex.exec( window.location.href );
+            if (results == null)
+                return "";
+            else
+                return results[1];
+        }
+    </script>
   </head>
 
   <body class="sand">
+
     <div id="outer-wrapper">
       <div id="wrapper">
 
@@ -52,7 +66,21 @@
         -->
         <hgroup id="main-feature" class="center">
           <br /><br /><br /><br />
-          <h2>You have been successfully signed out.</h2>
+          <h2>
+          <script type="text/javascript">
+              var query_str = getQuerystring('signout');
+              var response = "You have been successfully signed out";
+
+              if (query_str == "all")
+                  response += " of all SSO enabled applications.";
+              else if (query_str == "")
+                  response += ".";
+              else
+                  response += " of "+query_str+".";
+
+              document.write(response);
+          </script>
+          </h2>
           <br /><br /><br /><br />
         </hgroup>
 
