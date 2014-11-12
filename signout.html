@@ -68,7 +68,7 @@
           <br /><br /><br /><br />
           <h2>
           <script type="text/javascript">
-              var query_str = getQuerystring('app');
+              var query_str = decodeURIComponent(getQuerystring('app'));
               var response = "You have been successfully signed out";
 
               if (query_str == "all")
