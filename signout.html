@@ -68,6 +68,7 @@
           <br /><br /><br /><br />
           <script type="text/javascript">
               var query_str = decodeURIComponent(getQuerystring('app'));
+              query_str = query_str.replace(/[^A-Za-z0-9]/gmi, "")
               var response  = "<h2>You have been successfully signed out";
               var okta_msg  = "<a href='https://sso.mozilla.com/signout/terminate'>Click here to terminate all of your active SSO sessions</a>"
 
