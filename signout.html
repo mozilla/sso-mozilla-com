@@ -70,15 +70,18 @@
               var query_str = decodeURIComponent(getQuerystring('app'));
               query_str = query_str.replace(/[^A-Za-z0-9]/gmi, "")
               var response  = "<h2>You have been successfully signed out";
-              var okta_msg  = "<a href='https://sso.mozilla.com/signout/terminate'>Click here to terminate all of your active SSO sessions</a>"
+              var okta_msg  = "<a href='https://sso.mozilla.com/signout/terminate'>Click here to sign out of your SSO session.</a><br />This is necessary to prevent automatic sign in to SSO enabled applications from this machine in the future."
 
-              if (query_str == "all")
-                  response += " of all SSO enabled applications.";
-              else if (query_str == "")
-                  response += ".</h2><br /><br />"+okta_msg;
-              else
-                  response += " of "+query_str+".</h2><br /><br />"+okta_msg;
+              if (query_str == "all") {
+                  response += " of all SSO";
+                  okta_msg = "Make sure you also sign out of each individual application you used this session."
+              } else if (query_str == "") {
+                  // continue
+              } else {
+                  response += " of "+query_str;
+              }
 
+              response += ".</h2><br /><br />"+okta_msg;
               document.write(response);
           </script>
           <br /><br /><br /><br />
