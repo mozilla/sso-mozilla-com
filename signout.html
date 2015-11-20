@@ -40,7 +40,7 @@
           <a href="https://www.mozilla.org/" id="tabzilla" data-infobar="update">Mozilla</a>
 
           <!--
-            The main navigation is optional, for pages that need it. 
+            The main navigation is optional, for pages that need it.
             The number of links should be kept to a minimum, no more than 5 or 6.
             If you need more than 6 links in this navbar, you have bigger IA problems to focus on.
           -->
@@ -58,10 +58,10 @@
         </header>
 
         <!--
-          The main feature of a page is usually the main title, but may also consists of a promotional 
-          banners, introductory text, etc. However, this should not be the main content or "meat" of the 
-          page, so it shouldn't contain a lot of text or a full article. Think of it as a masthead for 
-          this specific page below the global masthead for the entire site. Use an appropriate element 
+          The main feature of a page is usually the main title, but may also consists of a promotional
+          banners, introductory text, etc. However, this should not be the main content or "meat" of the
+          page, so it shouldn't contain a lot of text or a full article. Think of it as a masthead for
+          this specific page below the global masthead for the entire site. Use an appropriate element
           with the id "main-feature". This might be a single heading (h1), an hgroup, a div, etc.
         -->
         <hgroup id="main-feature" class="center">
@@ -70,15 +70,18 @@
               var query_str = decodeURIComponent(getQuerystring('app'));
               query_str = query_str.replace(/[^A-Za-z0-9]/gmi, "")
               var response  = "<h2>You have been successfully signed out";
-              var okta_msg  = "<a href='https://sso.mozilla.com/signout/terminate'>Click here to terminate all of your active SSO sessions</a>"
+              var okta_msg  = "<a href='https://sso.mozilla.com/signout/terminate'>Click here to sign out of your SSO session.</a><br />This is necessary to prevent automatic sign in to SSO enabled applications from this machine in the future."
 
-              if (query_str == "all")
-                  response += " of all SSO enabled applications.";
-              else if (query_str == "")
-                  response += ".</h2><br /><br />"+okta_msg;
-              else
-                  response += " of "+query_str+".</h2><br /><br />"+okta_msg;
+              if (query_str == "all") {
+                  response += " of all SSO";
+                  okta_msg = "Make sure you also sign out of each individual application you used this session."
+              } else if (query_str == "") {
+                  // continue
+              } else {
+                  response += " of "+query_str;
+              }
 
+              response += ".</h2><br /><br />"+okta_msg;
               document.write(response);
           </script>
           <br /><br /><br /><br />
