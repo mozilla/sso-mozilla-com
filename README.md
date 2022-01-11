@@ -1,4 +1,1 @@
-sso.mozilla.com
-===============
-
-These are the static pages behind sso.mozilla.com.
+See https://github.com/mozilla-iam/sso-mozilla-com
